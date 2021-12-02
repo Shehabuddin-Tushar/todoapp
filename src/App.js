@@ -7,6 +7,7 @@ import Datatable from './Component/Datatable.js';
 function App() {
   const [mydata,setMydata]=useState([]);
   const [showPerPage, setShowPerPage] = useState(4);
+  const [filtervalue,setFiltervalue]=useState([]);
   const [pagination, setPagination] = useState({
     start: 0,
     end: showPerPage,
@@ -24,10 +25,15 @@ function App() {
     setPagination({ start: start, end: end });
   };
 
+  const handlefilterdata=(e)=>{
+       const pricevalue=mydata.filter((data)=>data.price==parseInt(Math.round(e.target.value)));
+       setFiltervalue(pricevalue);
+  }
 
   return (
     <div className="App">
-     
+    
+          <input type="text" placeholder="enter your price range" onChange={handlefilterdata}/>
            <TableHead>
               <TableRow>
                    <TableCell align="right">id</TableCell>
@@ -36,7 +42,23 @@ function App() {
                 </TableRow>
               </TableHead>
           {
-            mydata.slice(pagination.start, pagination.end).map((data)=>{
+            filtervalue.length > 3?filtervalue.slice(pagination.start, pagination.end).map((data)=>{
+              return(
+               <>
+               
+              <TableRow
+              key={data._id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+             >
+              
+              <TableCell align="right">{data.productId}</TableCell>
+              <TableCell align="right">{data.price}</TableCell>
+              <TableCell align="right">{data.specialPrice}</TableCell>
+              
+            </TableRow>
+             </>  
+              )
+            }):mydata.slice(pagination.start, pagination.end).map((data)=>{
               return(
                <>
                
