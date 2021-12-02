@@ -5,7 +5,7 @@ const Pagination = ({ showPerPage, onPaginationChange, total }) => {
 
   useEffect(() => {
     const value = showPerPage * counter;
-    onPaginationChange(value - showPerPage, value);
+     onPaginationChange(value - showPerPage, value);
   }, [counter]);
 
   const onButtonClick = (type) => {

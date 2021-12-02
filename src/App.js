@@ -3,6 +3,7 @@ import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Pagination from "./Component/Pagination.js";
+import Datatable from './Component/Datatable.js';
 function App() {
   const [mydata,setMydata]=useState([]);
   const [showPerPage, setShowPerPage] = useState(4);
@@ -59,6 +60,8 @@ function App() {
             total={mydata.length}
          />
  
+
+     <Datatable/>
     </div>
   );
 }
