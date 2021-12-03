@@ -26,7 +26,7 @@ function App() {
   };
 
   const handlefilterdata=(e)=>{
-       const pricevalue=mydata.filter((data)=>data.price==parseInt(Math.round(e.target.value)));
+       const pricevalue=mydata.filter((data)=>data.price==parseInt(e.target.value));
        setFiltervalue(pricevalue);
   }
 
